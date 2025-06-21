@@ -1,0 +1,532 @@
+/* Global Fonts and Colors */
+:root {
+    --primary-color: #ffd700;
+    --secondary-color: #8b4513;
+    --dark-bg: #121212;
+    --light-text: #fff;
+    --dark-text: #000;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+header {
+    background: linear-gradient(90deg, #000000, #4b2c20, var(--secondary-color));
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px;
+    border-radius: 10px;
+    margin-right: 20px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+}
+
+nav a {
+    color: var(--light-text);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, outline 0.2s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+nav a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    margin-left: 20px;
+}
+
+#searchBox {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #333;
+    color: var(--light-text);
+    transition: box-shadow 0.3s, outline 0.2s;
+}
+
+#searchBox::placeholder {
+    color: #bbb;
+}
+
+#searchBox:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+#suggestions {
+    position: absolute;
+    top: 40px;
+    background: #333;
+    border-radius: 5px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+#suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--light-text);
+    transition: background-color 0.3s;
+}
+
+#suggestions div:hover,
+#suggestions div:focus {
+    background-color: #555;
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+}
+
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Lora', serif;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../images/leather-background.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-size: 60px;
+    font-family: 'Lora', serif;
+    margin-bottom: 20px;
+}
+
+.hero-overlay p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.shop-button {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-text);
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s, outline 0.2s;
+}
+
+.shop-button:hover {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: var(--light-text);
+}
+
+.shop-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* About Brand Section */
+.about-brand p {
+    max-width: 900px;
+    margin: auto;
+    font-size: 22px;
+    line-height: 1.8;
+    font-family: 'Lora', serif;
+}
+
+/* Products Section */
+.products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background: #1e1e1e;
+    width: 320px;
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.product:hover img {
+    opacity: 0.3;
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.product:hover .overlay {
+    opacity: 1;
+}
+
+.overlay a {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-text);
+    padding: 12px 25px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background 0.3s, outline 0.2s;
+}
+
+.overlay a:hover {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: var(--light-text);
+}
+
+.overlay a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Contact Form */
+form {
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #333;
+    color: var(--light-text);
+    transition: box-shadow 0.3s, outline 0.2s;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+form button {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-text);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s, outline 0.2s;
+}
+
+form button:hover {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: var(--light-text);
+}
+
+form button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+footer {
+    background-color: #000;
+    color: var(--light-text);
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    transition: transform 0.3s, background-color 0.3s, outline 0.2s;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    background-color: #1da851;
+}
+
+.whatsapp-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+.whatsapp-button img {
+    width: 35px;
+    height: 35px;
+}
+
+/* About Intro specific styling */
+.about-intro p {
+    max-width: 900px;
+    margin: 20px auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.about-intro strong {
+    color: var(--primary-color);
+}
+
+/* Founder Section Styling */
+.founder {
+    background-color: #1a1a1a;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.founder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.founder-content img {
+    width: 250px; /* Increased width */
+    height: 250px; /* Increased height */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.founder-content p {
+    font-family: 'Lora', serif;
+    font-size: 1.2em;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.founder-text {
+    margin-top: 20px;
+}
+
+.founder-text p {
+    margin-bottom: 1em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    .logo-container {
+        margin-bottom: 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+
+    nav {
+        margin-bottom: 15px;
+    }
+
+    nav a {
+        margin: 0 8px;
+    }
+
+    .search-container {
+        margin-left: 0;
+        width: 80%;
+        max-width: 300px;
+    }
+
+    #searchBox {
+        width: 100%;
+    }
+
+    .product {
+        width: 90%;
+        height: auto;
+    }
+
+    .hero-overlay h1 {
+        font-size: 40px;
+    }
+
+    .hero-overlay p {
+        font-size: 18px;
+    }
+
+    .about-brand p {
+        font-size: 18px;
+    }
+
+    .founder-content {
+        flex-direction: column;
+    }
+
+    .founder-content img {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-overlay h1 {
+        font-size: 30px;
+    }
+
+    .hero-overlay p {
+        font-size: 16px;
+    }
+
+    .shop-button {
+        padding: 10px 25px;
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .about-brand p, .founder-content p {
+        font-size: 16px;
+    }
+
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+    }
+
+    .whatsapp-button img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Product Gallery Styling */
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.product-gallery-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}

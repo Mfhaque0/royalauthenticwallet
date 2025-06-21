@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Authentic Leather</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<header role="banner">
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="images/logo.png" alt="Royal Authentic Leather Logo" class="logo">
+        </a>
+        <h1>Royal Authentic Leather</h1>
+    </div>
+    <nav role="navigation">
+        <a href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="search-container">
+        <input type="text" id="searchBox" placeholder="Search Products..." aria-label="Search Products">
+        <div class="suggestions" id="suggestions" role="listbox"></div>
+    </div>
+</header>
+
+<main>
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-overlay">
+            <h1 id="hero-heading">Crafted with Soul. Worn with Pride.</h1>
+            <p>Premium Handcrafted Leather Footwear — Direct from Artisans to You</p>
+            <a href="#products" class="shop-button">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="section about-brand" aria-labelledby="about-brand-heading">
+        <h2 id="about-brand-heading">What Sets Us Apart</h2>
+        <p>
+            It’s our self-modified artistry — every pair is thoughtfully refined, customized, and tailored to suit modern tastes without compromising on classic heritage.
+            From rugged elegance to sleek minimalism, our designs reflect the soul of true leather, built to endure and elevate.
+        </p>
+    </section>
+
+    <section class="section" id="products" aria-labelledby="products-heading">
+        <h2 id="products-heading">Our Products</h2>
+        <div class="products">
+    <div class="product" data-aos="zoom-in">
+        <img src="images/wallets.jpg" alt="A collection of leather wallets">
+        <div class="overlay">
+            <a href="wallets/wallets.html">Wallets</a>
+        </div>
+    </div>
+    <div class="product" data-aos="zoom-in">
+        <img src="images/bags.jpg" alt="A stylish leather bag">
+        <div class="overlay">
+            <a href="bags/bags.html">Bags</a>
+        </div>
+    </div>
+    <div class="product" data-aos="zoom-in">
+        <img src="images/belts.jpg" alt="A selection of handcrafted leather belts">
+        <div class="overlay">
+            <a href="belts/belts.html">Belts</a>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact Us</h2>
+        <form action="mailto:contact@royalauthenticleather.com" method="post" enctype="text/plain">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p>Or contact us directly on <a href="https://wa.me/919262244933" target="_blank" aria-label="Contact us on WhatsApp">WhatsApp</a></p>
+    </section>
+</main>
+
+<footer role="contentinfo">
+    <p>© 2025 Royal Authentic Leather. All rights reserved.</p>
+</footer>
+
+<a class="whatsapp-button" href="https://wa.me/919262244933" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="images/whatsapp.png" alt="WhatsApp Icon">
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+<script>
+    const products = ["Wallets", "Bags", "Belts", "Leather Shoes", "Handbags", "Laptop Bags"];
+    const searchBox = document.getElementById("searchBox");
+    const suggestions = document.getElementById("suggestions");
+
+    searchBox.addEventListener("input", () => {
+        const input = searchBox.value.toLowerCase();
+        suggestions.innerHTML = "";
+        if (input) {
+            const filtered = products.filter(item =>
+                item.toLowerCase().includes(input)
+            );
+            if (filtered.length) {
+                filtered.forEach(item => {
+                    const div = document.createElement("div");
+                    div.textContent = item;
+                    div.setAttribute('tabindex', '0');
+                    div.setAttribute('role', 'option');
+                    div.addEventListener("click", () => {
+                        searchBox.value = item;
+                        suggestions.style.display = "none";
+                    });
+                    suggestions.appendChild(div);
+                });
+                suggestions.style.display = "block";
+            } else {
+                const noResultsDiv = document.createElement("div");
+                noResultsDiv.textContent = "No results found";
+                noResultsDiv.style.color = "#aaa";
+                noResultsDiv.style.padding = "10px";
+                suggestions.appendChild(noResultsDiv);
+                suggestions.style.display = "block";
+            }
+        } else {
+            suggestions.style.display = "none";
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!searchBox.contains(e.target) && !suggestions.contains(e.target)) {
+            suggestions.style.display = "none";
+        }
+    });
+
+    document.querySelectorAll('nav a, .shop-button, .overlay a, form button, .whatsapp-button').forEach(element => {
+        element.addEventListener('focus', () => {
+            element.style.outline = '2px solid #ffd700';
+        });
+        element.addEventListener('blur', () => {
+            element.style.outline = 'none';
+        });
+    });
+</script>
+
+</body>
+</html>

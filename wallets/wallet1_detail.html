@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet 1 - Royal Authentic Leather</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .slider-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slider-img {
+            min-width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .slider-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 10px;
+        }
+        .slider-buttons button {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+        .slider-dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .dot {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #aaa;
+            margin: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background-color: #ffd700;
+        }
+        .product-details {
+            max-width: 700px;
+            margin: 30px auto;
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<header role="banner">
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../images/logo.png" alt="Royal Authentic Leather Logo" class="logo">
+        </a>
+        <h1>Royal Authentic Leather</h1>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html#products">Products</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+
+    <h2 style="text-align:center; margin-top:30px;">Wallet 1 - Premium Leather</h2>
+
+    <!-- Image Slider -->
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <img src="images/wallet1-front.jpg" class="slider-img" alt="Front view of wallet">
+            <img src="images/wallet1-back.jpg" class="slider-img" alt="Back view of wallet">
+            <img src="images/wallet1-inside.jpg" class="slider-img" alt="Inside view of wallet">
+            <img src="images/wallet1-zoom.jpg" class="slider-img" alt="Zoomed detail of wallet">
+        </div>
+
+        <div class="slider-buttons">
+            <button class="prev-button">&#10094;</button>
+            <button class="next-button">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="slider-dots"></div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <p><strong>Material:</strong> 100% Genuine Premium Leather</p>
+        <p><strong>Design:</strong> Slim, Sleek, Modern with Classic Heritage</p>
+        <p><strong>Features:</strong> Multiple Card Slots, Cash Pockets, RFID Protection</p>
+        <p><strong>Color:</strong> Dark Brown</p>
+        <p><strong>Price:</strong> ₹2,999 (Udhaar Mana Hai)</p>
+        <p><strong>Warranty:</strong> 1 Year Craftsmanship Warranty Nahi Milegi</p>
+    </div>
+
+</main>
+
+<footer role="contentinfo">
+    <p>© 2025 Royal Authentic Leather. All rights reserved.</p>
+</footer>
+
+<a class="whatsapp-button" href="https://wa.me/919262244933" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="../images/whatsapp.png" alt="WhatsApp">
+</a>
+
+<!-- Slider JS -->
+<script>
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slider-img');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    const dotsContainer = document.querySelector('.slider-dots');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    // Create dots dynamically
+    slides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+        if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+        const offset = -currentIndex * 100;
+        sliderWrapper.style.transform = `translateX(${offset}%)`;
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    prevButton.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextButton.addEventListener('click', () => goToSlide(currentIndex + 1));
+</script>
+
+</body>
+</html>
