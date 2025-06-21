@@ -71,18 +71,56 @@
     </section>
 
     <section class="section" id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Contact Us</h2>
-        <form action="mailto:contact@royalauthenticleather.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <p>Or contact us directly on <a href="https://wa.me/919262244933" target="_blank" aria-label="Contact us on WhatsApp">WhatsApp</a></p>
-    </section>
+  <h2 id="contact-heading">Contact Us</h2>
+
+  <form id="contact-form" action="https://formspree.io/f/mjkreapo" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div id="thankyou-message" style="display:none; text-align: center; padding: 20px; color: green; font-weight: bold;">
+    Thank you! Your message has been sent.
+  </div>
+
+  <p style="text-align: center; margin-top: 20px;">
+    Or contact us directly on 
+    <a href="https://wa.me/919262244933" target="_blank" aria-label="Contact us on WhatsApp">WhatsApp</a>
+  </p>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const thankYou = document.getElementById("thankyou-message");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    const data = new FormData(form);
+    const xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        form.reset();
+        form.style.display = "none";
+        thankYou.style.display = "block";
+      } else {
+        alert("Oops! Something went wrong.");
+      }
+    };
+    xhr.send(data);
+  });
+</script>
+
 </main>
 
 <footer role="contentinfo">
