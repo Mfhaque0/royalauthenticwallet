@@ -15,12 +15,22 @@ Built purely with:
 - ✅ HTML5
 - ✅ CSS3
 - ✅ JavaScript
+- ✅ Formspree Integration for Contact Form
+
 
 ## 🚀 Live Demo
 
 You can view the live website here:  
-👉 [https://mfhaque0.github.io/royalauthenticwallet/](https://mfhaque0.github.io/royalauthenticwallet/)
+👉 [Visit Live Website] (https://mfhaque0.github.io/royal-authentic-leather/)
+
 
 ## 👨‍💻 Author
 
 **Md Faizanul Haque**  
+- GitHub: [mfhaque0](https://github.com/mfhaque0)
+
+## License
+
+This project is for educational and portfolio purposes.
+
+---
